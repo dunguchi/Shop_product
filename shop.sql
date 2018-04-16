@@ -41,7 +41,7 @@ create table product(
     price bigint not null,
     image varchar(255) not null,
     category_id bigint(255),
-	created_date date,
+	  created_date date,
     edited_date date,
     constraint fk_category_id foreign key(category_id) references menu(id)
 );
