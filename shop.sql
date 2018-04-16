@@ -46,4 +46,19 @@ create table product(
     constraint fk_category_id foreign key(category_id) references menu(id)
 );
 
+create table level_member(
+    id bigint primary key auto_increment,
+    title_level varchar(255) unique not null
+);
+
+create table member(
+    id bigint primary key auto_increment,
+    full_name varchar(255) not null,
+    phone bigint not null,
+    total_buy varchar(255) not null,
+    level_member_id bigint(255),
+    created_date date,
+    edited_date date,
+    constraint fk_level_id foreign key(level_member_id) references level_member(id)
+);
 

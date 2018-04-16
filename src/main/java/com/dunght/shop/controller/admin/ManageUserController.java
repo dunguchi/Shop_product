@@ -18,7 +18,12 @@ import com.dunght.shop.service.UserService;
 public class ManageUserController {
 	@Autowired
 	private UserService userService;
-
+	
+    @GetMapping("/login") 
+    public String getLogin() {
+        return "login";
+    }
+    
 	@GetMapping("/users")
 	public String getAllUser(Model model, Pageable pageable,
 			@RequestParam(required = false, value = "input") String input,
