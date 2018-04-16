@@ -1,8 +1,18 @@
 package com.dunght.shop.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -23,9 +33,15 @@ public class Role implements Serializable {
 
 	//bi-directional many-to-many association to User
 	@ManyToMany(mappedBy="roles", fetch=FetchType.EAGER)
+	@JsonIgnore
 	private List<User> users;
 
 	public Role() {
+	}
+	
+	public Role(Long id) {
+		super();
+		this.id = id;
 	}
 
 	public Role(String roleName) {

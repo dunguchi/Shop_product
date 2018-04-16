@@ -33,7 +33,8 @@ public class User implements Serializable {
 
 	@Column(name="avatar_url")
 	private String avatarUrl;
-
+	
+	@Column(name="email")
 	private String email;
 
 	@Column(name="full_name")
