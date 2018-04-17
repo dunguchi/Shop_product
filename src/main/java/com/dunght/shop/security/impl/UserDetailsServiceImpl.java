@@ -1,8 +1,8 @@
 package com.dunght.shop.security.impl;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.dunght.shop.entity.Role;
 import com.dunght.shop.entity.User;
@@ -23,6 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private UserRepository userRepository;
 	
 	@Override
+	@Transactional
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
         User user = userRepository.findByUsername(username);
@@ -34,7 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         	throw new UserNotActivatedException("User " + username + " is not activated");
         }
 
-        Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
+        Collection<GrantedAuthority> grantedAuthorities = new HashSet<>();
         List<Role> roles = user.getRoles();
         for (Role role : roles) {
             grantedAuthorities.add(new SimpleGrantedAuthority(role.getRoleName()));
