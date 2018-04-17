@@ -24,4 +24,9 @@ public class OverallController {
 		log.info("index page ");
 		return "admin/index";
 	}
+	
+    @GetMapping("/403")
+    public String accessDenied() {
+        return "403";
+    }
 }
