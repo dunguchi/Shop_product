@@ -18,4 +18,10 @@ public class OverallController {
 		log.info("login page ");
 		return "login/login-system";
 	}
+	
+	@GetMapping("/")
+	public String index() {
+		log.info("index page ");
+		return "admin/index";
+	}
 }
