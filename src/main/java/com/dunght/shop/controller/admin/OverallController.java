@@ -19,7 +19,7 @@ public class OverallController {
 		return "login/login-system";
 	}
 	
-	@GetMapping("/")
+	@GetMapping("/admin")
 	public String index() {
 		log.info("index page ");
 		return "admin/index";
