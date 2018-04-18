@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.dunght.shop.utils.PathViewConstant;
+
 /**
  * @author DungHo
  *
@@ -16,13 +18,13 @@ public class OverallController {
 	@GetMapping("/login")
 	public String loginPage() {
 		log.info("login page ");
-		return "login/login-system";
+		return PathViewConstant.PathBackend.LOGIN_ADMIN;
 	}
 	
 	@GetMapping("/admin")
 	public String index() {
 		log.info("index page ");
-		return "admin/index";
+		return PathViewConstant.PathBackend.INDEX_ADMIN;
 	}
 	
     @GetMapping("/403")
